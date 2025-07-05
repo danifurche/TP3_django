@@ -1,12 +1,11 @@
 from django import forms
 
 
-class CursoForm(forms.Form):
-    nombre = forms.CharField()
+class RepuestoForm(forms.Form):
+    num_parte = forms.CharField()
     descripcion = forms.CharField(widget=forms.Textarea, required=False)
-    duracion_semanas = forms.IntegerField(min_value=1, initial=4)
-    fecha_inicio = forms.DateField(
-        widget=forms.DateInput(attrs={'type': 'date'}))
+    importe = forms.IntegerField(min_value=1, initial=10)
+    widget=forms.DateInput(attrs={'type': 'date'})
     activo = forms.BooleanField(required=False, initial=True)
 
 

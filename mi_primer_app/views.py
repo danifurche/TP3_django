@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 
-from .models import Familiar, Curso, Estudiante
+from .models import Familiar, Repuesto, Estudiante
 
-from .forms import CursoForm, EstudianteForm
+from .forms import RepuestoForm, EstudianteForm
 
 # Create your views here.
 from django.http import HttpResponse
@@ -34,24 +34,23 @@ def crear_familiar(request, nombre):
     return render(request, "mi_primer_app/crear_familiar.html", {"nombre": nombre})
 
 
-def crear_curso(request):
+def crear_repuesto(request):
 
     if request.method == 'POST':
-        form = CursoForm(request.POST)
+        form = RepuestoForm(request.POST)
         if form.is_valid():
             # Procesar el formulario y guardar el curso
-            nuevo_curso = Curso(
-                nombre=form.cleaned_data['nombre'],
+            nuevo_repuesto = Repuesto(
+                num_parte=form.cleaned_data['num_parte'],
                 descripcion=form.cleaned_data['descripcion'],
-                duracion_semanas=form.cleaned_data['duracion_semanas'],
-                fecha_inicio=form.cleaned_data['fecha_inicio'],
+                importe=form.cleaned_data['importe'],
                 activo=form.cleaned_data['activo']
             )
-            nuevo_curso.save()
-            return redirect('cursos')
+            nuevo_repuesto.save()
+            return redirect('repuesto')
     else:
-        form = CursoForm()
-        return render(request, 'mi_primer_app/crear_curso.html', {'form': form})
+        form = RepuestoForm()
+        return render(request, 'mi_primer_app/crear_repuesto.html', {'form': form})
 
 
 def crear_estudiante(request):
@@ -74,13 +73,13 @@ def crear_estudiante(request):
         return render(request, 'mi_primer_app/crear_estudiante.html', {'form': form})
 
 
-def cursos(request):
-    cursos = Curso.objects.all()
+def Repuestos(request):
+    cursos = Repuestos.objects.all()
     return render(request, 'mi_primer_app/cursos.html', {'cursos': cursos})
 
 
-def buscar_cursos(request):
+def buscar_repuesto(request):
     if request.method == 'GET':
-        nombre = request.GET.get('nombre', '')
-        cursos = Curso.objects.filter(nombre__icontains=nombre)
-        return render(request, 'mi_primer_app/cursos.html', {'cursos': cursos, 'nombre': nombre})
+        num_parte = request.GET.get('num_parte', '')
+        cursos = Repuestos.objects.filter(nombre__icontains=num_parte)
+        return render(request, 'mi_primer_app/cursos.html', {'Repuestos': Repuestos, 'nombre': num_parte})

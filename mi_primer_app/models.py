@@ -14,15 +14,14 @@ class Familiar(models.Model):
         return f"{self.nombre} {self.apellido}"
 
 
-class Curso(models.Model):
-    nombre = models.CharField(max_length=100)
+class Repuesto(models.Model):
+    num_parte = models.CharField(max_length=10)
     descripcion = models.TextField(blank=True, null=True)
-    duracion_semanas = models.IntegerField(default=4)
-    fecha_inicio = models.DateField()
+    importe = models.IntegerField()
     activo = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.nombre
+        return self.num_parte
 
 
 class Estudiante(models.Model):
