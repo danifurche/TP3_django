@@ -21,11 +21,9 @@ def saludo_con_template(request):
 
 
 def crear_repuesto(request):
-
     if request.method == 'POST':
         form = RepuestoForm(request.POST)
         if form.is_valid():
-            # Procesar el formulario y guardar el curso
             nuevo_repuesto = Repuesto(
                 num_parte=form.cleaned_data['num_parte'],
                 descripcion=form.cleaned_data['descripcion'],
@@ -33,10 +31,10 @@ def crear_repuesto(request):
                 activo=form.cleaned_data['activo']
             )
             nuevo_repuesto.save()
-            return redirect('repuesto')
+            return redirect('repuestos')
     else:
         form = RepuestoForm()
-        return render(request, 'mi_primer_app/crear_repuesto.html', {'form': form})
+    return render(request, 'mi_primer_app/crear_repuesto.html', {'form': form})
 
 def crear_cliente(request):
     if request.method == 'POST':
@@ -73,7 +71,7 @@ def crear_unidad(request):
 
 def listar_repuestos(request):
     repuestos = Repuesto.objects.all()
-    return render(request, 'mi_primer_app/repuestos.html', {'repuestos': repuestos})
+    return render(request, 'mi_primer_app/repuesto.html', {'repuestos': repuestos})
 
 
 def buscar_repuesto(request):

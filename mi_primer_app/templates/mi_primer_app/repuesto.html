@@ -14,8 +14,8 @@
 <h2>repuesto: </h2>
 
 <ul>
-    {% for repuesto in repuesto %}
-        <li>{{ repuesto.num_parte }}</li>
+    {% for item in repuestos %}
+        <li>{{ item.num_parte }}</li>
     {% empty %}
         <li>No hay repuestos disponibles.</li>
     {% endfor %}
