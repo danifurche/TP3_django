@@ -4,9 +4,7 @@ from .models import Repuesto, Cliente, Unidad
 
 from .forms import RepuestoForm, ClienteForm, UnidadForm
 
-# Create your views here.
 from django.http import HttpResponse
-
 
 def inicio(request):
     return render(request, 'mi_primer_app/inicio.html')

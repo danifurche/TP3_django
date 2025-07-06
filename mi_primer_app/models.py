@@ -1,8 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
-
 class Repuesto(models.Model):
     num_parte = models.CharField(max_length=10)
     descripcion = models.TextField(blank=True, null=True)
@@ -11,7 +8,6 @@ class Repuesto(models.Model):
 
     def __str__(self):
         return self.num_parte
-
 
 class Cliente(models.Model):
     nombre = models.CharField(max_length=100)

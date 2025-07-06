@@ -11,11 +11,11 @@
     <button type="submit">Buscar</button>
 </form>
 
-<h2>repuesto: </h2>
+<h2>Repuestos encontrados: </h2>
 
 <ul>
     {% for item in repuestos %}
-        <li>{{ item.num_parte }}</li>
+        <li>{{ item.num_parte }} - {{ item.descripcion }} - ${{ item.importe }}</li>
     {% empty %}
         <li>No hay repuestos disponibles.</li>
     {% endfor %}
