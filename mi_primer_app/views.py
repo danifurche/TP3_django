@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 
-from .models import Familiar, Repuesto, Estudiante
+from .models import Repuesto, Cliente, Unidad
 
-from .forms import RepuestoForm, EstudianteForm
+from .forms import RepuestoForm, ClienteForm, UnidadForm
 
 # Create your views here.
 from django.http import HttpResponse
@@ -18,20 +18,6 @@ def saludo(request):
 
 def saludo_con_template(request):
     return render(request, 'mi_primer_app/saludo.html')
-
-
-def crear_familiar(request, nombre):
-    if nombre is not None:
-        # Creamos un nuevo objeto Familiar
-        nuevo_familiar = Familiar(
-            nombre=nombre,
-            apellido="ApellidoEjemplo",
-            edad=30,
-            fecha_nacimiento="1993-01-01",
-            parentesco="Primo"
-        )
-        nuevo_familiar.save()
-    return render(request, "mi_primer_app/crear_familiar.html", {"nombre": nombre})
 
 
 def crear_repuesto(request):
@@ -52,34 +38,50 @@ def crear_repuesto(request):
         form = RepuestoForm()
         return render(request, 'mi_primer_app/crear_repuesto.html', {'form': form})
 
-
-def crear_estudiante(request):
-
+def crear_cliente(request):
     if request.method == 'POST':
-        form = EstudianteForm(request.POST)
+        form = ClienteForm(request.POST)
         if form.is_valid():
-            # Procesar el formulario y guardar el curso
-            nuevo_curso = Estudiante(
+            nuevo_cliente = Cliente(
                 nombre=form.cleaned_data['nombre'],
                 apellido=form.cleaned_data['apellido'],
-                email=form.cleaned_data['email'],
-                edad=form.cleaned_data['edad'],
-                fecha_inscripcion=form.cleaned_data['fecha_inscripcion']
+                celular=form.cleaned_data['celular'],
+                email=form.cleaned_data['email']
             )
-            nuevo_curso.save()
+            nuevo_cliente.save()
             return redirect('inicio')
     else:
-        form = EstudianteForm()
-        return render(request, 'mi_primer_app/crear_estudiante.html', {'form': form})
+        form = ClienteForm()
+    return render(request, 'mi_primer_app/crear_cliente.html', {'form': form})
 
 
-def Repuestos(request):
-    cursos = Repuestos.objects.all()
-    return render(request, 'mi_primer_app/cursos.html', {'cursos': cursos})
+def crear_unidad(request):
+    if request.method == 'POST':
+        form = UnidadForm(request.POST)
+        if form.is_valid():
+            nueva_unidad = Unidad(
+                marca=form.cleaned_data['marca'],
+                modelo=form.cleaned_data['modelo'],
+                anio=form.cleaned_data['anio']
+            )
+            nueva_unidad.save()
+            return redirect('inicio')
+    else:
+        form = UnidadForm()
+    return render(request, 'mi_primer_app/crear_unidad.html', {'form': form})
+
+
+def listar_repuestos(request):
+    repuestos = Repuesto.objects.all()
+    return render(request, 'mi_primer_app/repuestos.html', {'repuestos': repuestos})
 
 
 def buscar_repuesto(request):
     if request.method == 'GET':
         num_parte = request.GET.get('num_parte', '')
-        cursos = Repuestos.objects.filter(nombre__icontains=num_parte)
-        return render(request, 'mi_primer_app/cursos.html', {'Repuestos': Repuestos, 'nombre': num_parte})
+        resultados = Repuesto.objects.filter(num_parte__icontains=num_parte)
+        return render(request, 'mi_primer_app/repuesto.html', {
+            'repuestos': resultados,
+            'num_parte': num_parte
+        })
+

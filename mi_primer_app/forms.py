@@ -1,18 +1,20 @@
 from django import forms
 
-
 class RepuestoForm(forms.Form):
     num_parte = forms.CharField()
     descripcion = forms.CharField(widget=forms.Textarea, required=False)
     importe = forms.IntegerField(min_value=1, initial=10)
-    widget=forms.DateInput(attrs={'type': 'date'})
     activo = forms.BooleanField(required=False, initial=True)
 
 
-class EstudianteForm(forms.Form):
-    nombre = forms.CharField(label="Nombre", max_length=100)
-    apellido = forms.CharField(label="Apellido", max_length=100)
+class ClienteForm(forms.Form):
+    nombre = forms.CharField(max_length=100)
+    apellido = forms.CharField(max_length=100)
+    celular = forms.CharField(max_length=20)
     email = forms.EmailField()
-    edad = forms.IntegerField(min_value=10, max_value=100)
-    fecha_inscripcion = forms.DateField(
-        widget=forms.DateInput(attrs={'type': 'date'}))
+
+
+class UnidadForm(forms.Form):
+    marca = forms.CharField(max_length=100)
+    modelo = forms.CharField(max_length=100)
+    anio = forms.IntegerField(min_value=1900, max_value=2100)
