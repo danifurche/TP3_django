@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
-from .models import Repuesto, Cliente, Unidad
+from .models import Repuesto, Cliente, Unidad, Accesorio
 
-from .forms import RepuestoForm, ClienteForm, UnidadForm
+from .forms import RepuestoForm, ClienteForm, UnidadForm, AccesorioForm
 
 from django.http import HttpResponse
 
@@ -81,3 +83,12 @@ def buscar_repuesto(request):
             'num_parte': num_parte
         })
 
+class AccesorioListView(ListView):
+    model = Accesorio
+    template_name = 'mi_primer_app/listar_accesorio.html'
+
+class AccesorioCreateview(CreateView):
+    model = Accesorio
+    form_class = AccesorioForm
+    template_name = 'mi_primer_app/crear_accesorio.html'
+    success_url = reverse_lazy()

@@ -1,4 +1,5 @@
 from django import forms
+from .models import Accesorio, Repuesto, Cliente, Unidad
 
 class RepuestoForm(forms.Form):
     num_parte = forms.CharField()
@@ -18,3 +19,9 @@ class UnidadForm(forms.Form):
     marca = forms.CharField(max_length=100)
     modelo = forms.CharField(max_length=100)
     anio = forms.IntegerField(min_value=1900, max_value=2100)
+
+class AccesorioForm(forms.ModelForm):
+    class Meta:
+        model = Accesorio
+        fields = ['modelo', 'marca', 'descripcion']
+
