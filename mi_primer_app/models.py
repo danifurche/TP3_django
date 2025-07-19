@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 
 class Repuesto(models.Model):
     num_parte = models.CharField(max_length=10)
@@ -14,6 +15,7 @@ class Cliente(models.Model):
     apellido = models.CharField(max_length=100)
     celular = models.CharField(max_length=20)
     email = models.EmailField()
+    fecha_cumple = models.DateField(default=date(2000, 1, 1))
 
     def __str__(self):
         return f"{self.nombre} {self.apellido}"
@@ -35,3 +37,11 @@ class Accesorio(models.Model):
 
     def __str__(self):
         return f'{self.marca} {self.modelo}'
+
+class Indumentaria(models.Model):
+    num_parte = models.CharField(max_length=10)
+    marca = models.CharField(max_length=20)
+    descripcion = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.marca} {self.num_parte}'

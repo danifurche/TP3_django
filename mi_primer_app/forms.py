@@ -1,5 +1,5 @@
 from django import forms
-from .models import Accesorio, Repuesto, Cliente, Unidad
+from .models import Accesorio, Repuesto, Cliente, Unidad, Indumentaria
 
 class RepuestoForm(forms.Form):
     num_parte = forms.CharField()
@@ -13,6 +13,8 @@ class ClienteForm(forms.Form):
     apellido = forms.CharField(max_length=100)
     celular = forms.CharField(max_length=20)
     email = forms.EmailField()
+    fecha_cumple = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'}))
 
 
 class UnidadForm(forms.Form):
@@ -24,4 +26,9 @@ class AccesorioForm(forms.ModelForm):
     class Meta:
         model = Accesorio
         fields = ['modelo', 'marca', 'descripcion']
+
+class IndumentariaForm(forms.ModelForm):
+    class Meta:
+        model = Indumentaria
+        fields = ['num_parte', 'marca', 'descripcion']
 

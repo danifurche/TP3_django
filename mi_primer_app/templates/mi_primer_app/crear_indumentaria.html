@@ -1,0 +1,25 @@
+{% extends "padre.html" %}
+
+{% block title %} Crear indumentaria {% endblock %}
+
+{% block content %}
+
+<h2>Crear Indumentaria</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>
+
+{% if form.errors %}
+  <div style="color: red;">
+    {{ form.errors }}
+  </div>
+{% endif %}
+
+{% endblock %}
+
+
+
+
+

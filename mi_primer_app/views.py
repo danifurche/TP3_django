@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
-from .models import Repuesto, Cliente, Unidad, Accesorio
+from .models import Repuesto, Cliente, Unidad, Accesorio, Indumentaria
 
-from .forms import RepuestoForm, ClienteForm, UnidadForm, AccesorioForm
+from .forms import RepuestoForm, ClienteForm, UnidadForm, AccesorioForm, IndumentariaForm
 
 from django.http import HttpResponse
 
@@ -44,7 +44,8 @@ def crear_cliente(request):
                 nombre=form.cleaned_data['nombre'],
                 apellido=form.cleaned_data['apellido'],
                 celular=form.cleaned_data['celular'],
-                email=form.cleaned_data['email']
+                email=form.cleaned_data['email'],
+                fecha_cumple=form.cleaned_data['fecha_cumple']
             )
             nuevo_cliente.save()
             return redirect('inicio')
@@ -79,7 +80,7 @@ def buscar_repuesto(request):
         num_parte = request.GET.get('num_parte', '')
         resultados = Repuesto.objects.filter(num_parte__icontains=num_parte)
         return render(request, 'mi_primer_app/repuesto.html', {
-            'repuestos': resultados,
+            'repuesto': resultados,
             'num_parte': num_parte
         })
 
@@ -92,3 +93,31 @@ class AccesorioCreateview(CreateView):
     form_class = AccesorioForm
     template_name = 'mi_primer_app/crear_accesorio.html'
     success_url = reverse_lazy()
+
+class IndumentariaListView(ListView):
+    model = Indumentaria
+    template_name = 'mi_primer_app/listar_indumentaria.html'
+    context_object_name = 'indumentaria'
+
+class IndumentariaCreateview(CreateView):
+    model = Indumentaria
+    form_class = IndumentariaForm
+    template_name = 'mi_primer_app/crear_indumentaria.html'
+    success_url = reverse_lazy('listar-indumentaria')
+
+class IndumentariaDetailView (DetailView):
+    model = Indumentaria
+    template_name = 'mi_primer_app/detalle_indumentaria.html'
+    context_object_name = 'indumentaria'    
+
+
+class IndumentariaUpdateView (UpdateView):
+    model = Indumentaria
+    form_class = IndumentariaForm
+    template_name = 'mi_primer_app/crear_indumentaria.html'
+    success_url = reverse_lazy('listar-indumentaria')
+
+class IndumentariaDeleteView (DeleteView):
+    model = Indumentaria
+    template_name = 'mi_primer_app/eliminar_indumentaria.html'
+    success_url = reverse_lazy('listar-indumentaria')
