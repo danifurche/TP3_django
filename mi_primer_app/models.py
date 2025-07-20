@@ -31,12 +31,12 @@ class Unidad(models.Model):
 
 
 class Accesorio(models.Model):
-    modelo = models.CharField(max_length=20)
+    num_parte = models.CharField(max_length=10)
     marca = models.CharField(max_length=20)
     descripcion = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return f'{self.marca} {self.modelo}'
+        return f'{self.num_parte} {self.marca}'
 
 class Indumentaria(models.Model):
     num_parte = models.CharField(max_length=10)

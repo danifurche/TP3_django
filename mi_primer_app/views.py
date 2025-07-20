@@ -87,17 +87,37 @@ def buscar_repuesto(request):
 class AccesorioListView(ListView):
     model = Accesorio
     template_name = 'mi_primer_app/listar_accesorio.html'
+    context_object_name = 'accesorio'
+    ordering = ['num_parte']
 
 class AccesorioCreateview(CreateView):
     model = Accesorio
     form_class = AccesorioForm
     template_name = 'mi_primer_app/crear_accesorio.html'
-    success_url = reverse_lazy()
+    success_url = reverse_lazy('listar-accesorio')
+
+class AccesorioDetailView (DetailView):
+    model = Accesorio
+    template_name = 'mi_primer_app/detalle_Accesorio.html'
+    context_object_name = 'accesorio'    
+
+
+class AccesorioUpdateView (UpdateView):
+    model = Accesorio
+    form_class = AccesorioForm
+    template_name = 'mi_primer_app/crear_accesorio.html'
+    success_url = reverse_lazy('listar-accesorio')
+
+class AccesorioDeleteView (DeleteView):
+    model = Accesorio
+    template_name = 'mi_primer_app/eliminar_accesorio.html'
+    success_url = reverse_lazy('listar-accesorio')
 
 class IndumentariaListView(ListView):
     model = Indumentaria
     template_name = 'mi_primer_app/listar_indumentaria.html'
     context_object_name = 'indumentaria'
+    ordering = ['num_parte']
 
 class IndumentariaCreateview(CreateView):
     model = Indumentaria

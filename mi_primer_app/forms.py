@@ -25,7 +25,7 @@ class UnidadForm(forms.Form):
 class AccesorioForm(forms.ModelForm):
     class Meta:
         model = Accesorio
-        fields = ['modelo', 'marca', 'descripcion']
+        fields = ['num_parte', 'marca', 'descripcion']
 
 class IndumentariaForm(forms.ModelForm):
     class Meta:

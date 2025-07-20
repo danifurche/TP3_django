@@ -2,7 +2,8 @@ from django.urls import path
 
 from .views import (saludo, saludo_con_template, inicio, crear_repuesto, buscar_repuesto, 
                     listar_repuestos, crear_cliente, crear_unidad, AccesorioListView,
-                    AccesorioCreateview, IndumentariaListView, IndumentariaCreateview,
+                    AccesorioCreateview, AccesorioDetailView, AccesorioUpdateView, AccesorioDeleteView, 
+                    IndumentariaListView, IndumentariaCreateview,
                     IndumentariaDeleteView, IndumentariaDetailView, IndumentariaUpdateView )
 
 urlpatterns = [
@@ -18,6 +19,9 @@ urlpatterns = [
     # urls con vistas basadas ern clase
     path('listar-accesorio/', AccesorioListView.as_view(), name='listar-accesorio'),
     path('crear-accesorio/', AccesorioCreateview.as_view(), name='crear-accesorio'),
+    path('detalle-accesorio/<int:pk>', AccesorioDetailView.as_view(), name='detalle-accesorio'),
+    path('editar/<int:pk>', AccesorioUpdateView.as_view(), name='editar-accesorio'),
+    path('eliminar/<int:pk>', AccesorioDeleteView.as_view(), name='eliminar-accesorio'),
     path('listar-indumentaria/', IndumentariaListView.as_view(), name='listar-indumentaria'),
     path('crear-indumentaria/', IndumentariaCreateview.as_view(), name='crear-indumentaria'),
     path('detalle-indumentaria/<int:pk>', IndumentariaDetailView.as_view(), name='detalle-indumentaria'),
