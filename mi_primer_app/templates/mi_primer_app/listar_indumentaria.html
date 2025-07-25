@@ -5,6 +5,15 @@
 
     <h2 class="mb-4">Listado de Indumentaria</h2>
 
+<!-- Formulario de búsqueda -->
+<form method="GET" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="num_parte" class="form-control" placeholder="Buscar por número de parte..." value="{{ num_parte }}">
+        <button type="submit" class="btn btn-outline-primary">Buscar</button>
+    </div>
+</form>
+
+    
     <!-- Botón para agregar nueva indumentaria -->
     <div class="mb-3">
         <a href="{% url 'crear-indumentaria' %}" class="btn btn-success">

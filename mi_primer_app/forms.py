@@ -1,11 +1,10 @@
 from django import forms
 from .models import Accesorio, Repuesto, Cliente, Unidad, Indumentaria
 
-class RepuestoForm(forms.Form):
-    num_parte = forms.CharField()
-    descripcion = forms.CharField(widget=forms.Textarea, required=False)
-    importe = forms.IntegerField(min_value=1, initial=10)
-    activo = forms.BooleanField(required=False, initial=True)
+class RepuestoForm(forms.ModelForm):
+    class Meta:
+        model = Repuesto
+        fields = ['num_parte', 'descripcion', 'importe', 'activo']
 
 
 class ClienteForm(forms.Form):
