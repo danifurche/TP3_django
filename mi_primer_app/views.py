@@ -52,7 +52,7 @@ class RepuestoUpdateView (LoginRequiredMixin, UpdateView):
     model = Repuesto
     form_class = RepuestoForm
     template_name = 'mi_primer_app/crear_repuesto.html'
-    success_url = reverse_lazy('listar-repuestos')
+    success_url = reverse_lazy('repuesto')
 
 class RepuestoDeleteView (LoginRequiredMixin, DeleteView):
     model = Repuesto

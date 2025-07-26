@@ -8,8 +8,11 @@ Tutora= Camila Belen Arena
 
 Alumno: Daniel Furche
 
+Link a mi video: 
+
 # Proyecto Django - Repuestos, Accesorios e Indumentaria para Motos
-- Este proyecto fue desarrollado con la intencion de mostrar un catalogo de artículos de moto en distintos rubros: **Repuestos, Accesorios e Indumentaria**.
+-  La idea del proyecto fue crear una plataforma donde se puedan ver artículos de distintos rubros "Accesorios, Repuestos e Indumentaria" de motos. En un próximo paso se estarán cargando fotos, con el fin de convertirlo en catalogo. 
+
 
 # ¿Qué se puede hacer?
 - Crear, listar, editar y eliminar:
