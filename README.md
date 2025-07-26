@@ -28,7 +28,7 @@ Link a mi video:
 - Búsqueda por número de parte
 - Página de inicio y página "Acerca de mí"
 
-# Tecnologías usadas
+# Tecnologia usadas
 - asgiref==3.8.1
 - Django==5.2.3
 - sqlparse==0.5.3
@@ -61,9 +61,12 @@ python manage.py runserver
 7) Abrir en el navegador
 Ingresar a: http://127.0.0.1:8000
 
-# usuario de rpueba
+# Usuario de prueba
 - usuario: admin
 - clave: 1234
+
+- usuario: fede
+- clave: Federico1
 
 # Estructura del Proyecto
 TP3_DJANGO/
