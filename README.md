@@ -1,9 +1,13 @@
-PROYECTO FINAL
+# PROYECTO FINAL
 
 Plataforma: CODERHOUSE
+
 Curso: PYTHON
+
 Comision: 78315
+
 Profesor: Miguel Rodenas
+
 Tutora= Camila Belen Arena
 
 Alumno: Daniel Furche
