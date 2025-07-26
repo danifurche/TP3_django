@@ -12,7 +12,7 @@ Tutora= Camila Belen Arena
 
 Alumno: Daniel Furche
 
-Link a mi video: 
+Link a mi video: https://www.loom.com/share/2f5e7fc0c8e046ca9adddb1f5e18d156?sid=99ddc256-65aa-4e3c-92dd-b59ad10ee2ed
 
 # Proyecto Django - Repuestos, Accesorios e Indumentaria para Motos
 -  La idea del proyecto fue crear una plataforma donde se puedan ver artículos de distintos rubros "Accesorios, Repuestos e Indumentaria" de motos. En un próximo paso se estarán cargando fotos, con el fin de convertirlo en catalogo. 
